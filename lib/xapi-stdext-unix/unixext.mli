@@ -19,7 +19,6 @@ val mkdir_safe : string -> Unix.file_perm -> unit
 val mkdir_rec : string -> Unix.file_perm -> unit
 val pidfile_write : string -> unit
 val pidfile_read : string -> int option
-val daemonize : unit -> unit
 val with_file : string -> Unix.open_flag list -> Unix.file_perm -> (Unix.file_descr -> 'a) -> 'a
 val with_input_channel : string -> (in_channel -> 'a) -> 'a
 val with_directory : string -> (Unix.dir_handle -> 'a) -> 'a
@@ -105,7 +104,7 @@ val really_read_string : Unix.file_descr -> int -> string
 
 (** [really_write] keeps repeating the write operation until all bytes
  * have been written or an error occurs. This is not atomic but is
- * robust against EINTR errors. 
+ * robust against EINTR errors.
  * See: https://ocaml.github.io/ocamlunix/ocamlunix.html#sec118 *)
 val really_write : Unix.file_descr -> string -> int -> int -> unit
 val really_write_string : Unix.file_descr -> string -> unit
